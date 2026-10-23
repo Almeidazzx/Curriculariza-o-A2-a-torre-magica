@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Torre Mágica</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <section id="inicio" class="tela inicio">
+    <div class="botoes-inicio">
+      <button onclick="abrirMapa()">JOGAR</button>
+      <button onclick="abrirConfiguracoes()">CONFIGURAÇÕES</button>
+      <button onclick="mostrarTela('creditos')">CRÉDITOS</button>
+      <button onclick="sair()">SAIR</button>
+    </div>
+  </section>
+
+  <section id="mapa" class="tela">
+    <header><button onclick="mostrarTela('inicio')">← Início</button><h1>A Torre Mágica</h1></header>
+    <div class="painel">
+      <h2 id="nomeArea">Floresta Encantada</h2>
+      <p>Termine um andar para liberar o próximo.</p>
+      <div id="areas"></div>
+      <div id="andares"></div>
+      <p id="progresso"></p>
+    </div>
+  </section>
+
+  <section id="jogo" class="tela">
+    <header><button onclick="abrirMapa()">← Andares</button><h1>A Torre Mágica</h1><button onclick="ouvirPergunta()">🔊 Ouvir</button></header>
+    <div class="painel">
+      <p id="informacao"></p>
+      <div class="barra"><div id="barraInterna"></div></div>
+      <h2 id="pergunta"></h2>
+      <div id="atividade"></div>
+      <p id="mensagem"></p>
+    </div>
+  </section>
+
+  <section id="resultado" class="tela">
+    <div class="painel">
+      <h1>Andar concluído!</h1>
+      <h2 id="nota"></h2>
+      <p id="elogio">Você conseguiu!</p>
+      <button onclick="repetir()">Repetir andar</button>
+      <button onclick="abrirMapa()">Escolher andar</button>
+      <button onclick="proximoAndar()">Próximo andar</button>
+    </div>
+  </section>
+
+  <!-- Tela de vitória com a arte do cavaleiro e do dragão -->
+  <section id="vitoria" class="tela">
+    <div class="vitoria-conteudo">
+      <img class="imagem-vitoria" src="vitoria-cavaleiro.png"
+           alt="Cavaleiro vitorioso sobre o dragão derrotado, em frente ao castelo">
+      <div class="botoes-vitoria">
+        <p id="notaFinal"></p>
+        <button onclick="abrirMapa()">Ver meus andares</button>
+        <button onclick="mostrarTela('inicio')">Voltar ao início</button>
+        <button onclick="jogarNovamente()">Jogar novamente</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="configuracoes" class="tela">
+    <div class="painel">
+      <h1>Configurações</h1>
+      <label><input type="checkbox" id="musicaLigada" onchange="alterarMusica()"> Música de fundo</label>
+      <p>Volume da música: <span id="numeroMusica">50</span>%</p>
+      <input type="range" id="volumeMusica" min="0" max="100" value="50" oninput="ajustarVolumes()">
+      <p>Volume da voz: <span id="numeroVoz">90</span>%</p>
+      <input type="range" id="volumeVoz" min="0" max="100" value="90" oninput="ajustarVolumes()">
+      <p><button onclick="ouvirTeste()">Testar voz</button></p>
+      <button onclick="mostrarTela('inicio')">Voltar</button>
+    </div>
+  </section>
+
+  <section id="creditos" class="tela">
+    <div class="painel">
+      <h1>Créditos</h1>
+      <p>A Torre Mágica — Jogo educativo para crianças de 5 e 6 anos.</p>
+      <p>Conteúdos: cores, contagem, grandezas e noções espaciais.</p>
+      <button onclick="mostrarTela('inicio')">Voltar</button>
+    </div>
+  </section>
+
+  <audio id="musica" loop></audio>
+  <script src="jogo.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+/* A TORRE MÁGICA - APARÊNCIA DO JOGO
+   CSS serve para mudar cores, tamanhos e posições.
+   Cada parte abaixo cuida de um elemento da tela. */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #15344b;
+    color: white;
+}
+/* Botões do jogo */
+button {
+    cursor: pointer;
+    padding: 13px 18px;
+    border: 3px solid #ad783d;
+    border-radius: 12px;
+    background: #ffda8b;
+    color: #392b46;
+    font-size: 19px;
+    font-weight: bold;
+}
+button:disabled {
+    background: #888;
+    opacity: .65;
+    cursor: not-allowed;
+}
+/* Telas: apenas a tela ativa aparece */
+.tela {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+.tela.ativa {
+    display: block;
+}
+/* Imagem da tela inicial */
+.inicio {
+    padding: 0;
+    position: relative;
+    background: #438fc8 url("tela-inicial.png") center/contain no-repeat;
+    height: 100vh;
+}
+.inicio.ativa {
+    display: block;
+}
+.botoes-inicio {
+    position: absolute;
+    left: 41.5%;
+    top: 53.5%;
+    width: 18.5%;
+    height: 33%;
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+}
+.botoes-inicio button {
+    flex: 1;
+    padding: 0;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    font-size: 1px;
+}
+.botoes-inicio button:focus, .botoes-inicio button:hover {
+    outline: 3px solid #fff9b8;
+}
+header {
+    max-width: 980px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+header h1 {
+    font-size: 25px;
+}
+/* Caixa onde aparecem as perguntas */
+.painel {
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 28px;
+    text-align: center;
+    border: 5px solid #e3ad70;
+    border-radius: 22px;
+    background: #203b50ee;
+}
+#areas, #andares, .opcoes, .pares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 22px 0;
+}
+#areas button {
+    font-size: 16px;
+}
+#andares button {
+    min-width: 180px;
+    min-height: 100px;
+}
+#pergunta {
+    font-size: clamp(24px, 4vw, 38px);
+}
+.figura {
+    font-size: 60px;
+    margin: 14px;
+}
+.cena {
+    background: #d2eff4;
+    border: 4px solid #e8b475;
+    border-radius: 20px;
+    color: #253c47;
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 580px;
+}
+.cena .figura {
+    display: inline-block;
+}
+.cena.vertical .figura {
+    display: block;
+}
+.opcoes button {
+    min-width: 160px;
+    min-height: 70px;
+}
+/* Barra de progresso das perguntas */
+.barra {
+    height: 17px;
+    background: #0d1c31;
+    border: 2px solid #ffc878;
+    border-radius: 20px;
+}
+#barraInterna {
+    height: 100%;
+    background: #87dc84;
+    width: 0;
+}
+#mensagem {
+    min-height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.cartao {
+    background: #fff2ce;
+    color: #29364c;
+    padding: 18px;
+    border-radius: 14px;
+}
+.alvo {
+    border: 4px dashed #e8b475;
+    min-width: 150px;
+    min-height: 90px;
+    padding: 16px;
+}
+.selecionado {
+    outline: 5px solid #82df83;
+}
+#mapa {
+    background: linear-gradient(#70b8dc, #317c5e);
+}
+#mapa.area1, #jogo.area1 {
+    background: linear-gradient(#5677b4, #544a87);
+}
+#mapa.area2, #jogo.area2 {
+    background: linear-gradient(#663f58, #9d4c34);
+}
+#jogo {
+    background: linear-gradient(#70b8dc, #317c5e);
+}
+input[type="range"] {
+    width: min(350px, 90%);
+}
+/* Ajustes para telas pequenas */
+@media(max-width: 600px) {
+  .tela {
+    padding: 8px;
+} .painel {
+    padding: 14px;
+}
+  .botoes-inicio {
+    left: 40%;
+    width: 21%;
+}
+  .opcoes button {
+    min-width: 120px;
+} header h1 {
+    font-size: 18px;
+}
+}
+
+/* Atividade de ligar pares */
+.coluna-pares { display: flex; flex-direction: column; gap: 12px; flex: 1; min-width: 130px; }
+.coluna-pares button { min-height: 70px; overflow-wrap: anywhere; }
+.coluna-pares button:disabled { background: #a9dbab; opacity: .85; }
+
+/* Tela de vitória: imagem em pixel art e botões para continuar */
+#vitoria {
+    background: #1e254b;
+    padding: 12px;
+}
+.vitoria-conteudo {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.imagem-vitoria {
+    display: block;
+    width: 100%;
+    max-height: 76vh;
+    object-fit: contain;
+    image-rendering: auto;
+    border: 4px solid #e4ae65;
+    border-radius: 12px;
+}
+.botoes-vitoria {
+    padding: 12px;
+    background: #28335c;
+    border-radius: 12px;
+}
+.botoes-vitoria p {
+    margin: 4px 0 12px;
+    font-size: 20px;
+}
+.botoes-vitoria button {
+    margin: 5px;
+}
